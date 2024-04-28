@@ -67,7 +67,7 @@
                     <button class="btn btn-primary">Buy Now</button>
                 </div>
 
-                <h3>hola</h3>
+                <h3>hello</h3>
             
         </div>
         
