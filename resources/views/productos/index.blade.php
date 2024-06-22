@@ -51,21 +51,41 @@
 
     @foreach ($productos as $producto)
 
-        <div class="card" class="mr-4">
+        <div class="card" class="mr-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-6">
             
             <div class="flex justify-center">
+                <!-- Tengo que poner las imagenes automaticas aqui 
+                >
+                -->
+                <!--  <img class="w-[200px] rounded-[25%]" src="https://cdn.pixabay.com/photo/2023/09/23/19/15/ai-generated-8271636_1280.jpg" alt=""> {{ $producto->nombre }}" alt="{{ $producto->nombre }} <img src="https://unsplash.com/es/images/food/ice-cream">-->
+
                 <img class="w-[200px] rounded-[25%]" src="https://cdn.pixabay.com/photo/2023/09/23/19/15/ai-generated-8271636_1280.jpg" alt="">
+                
             </div>
-            <h1 class="card_title">{{ $producto['nombre'] }}</h1>
-            <h2 class="card_subtitle">{{$nombre}}</h2>
+            <h1 class="card_title">{{ $producto->nombre }}</h1>
+            <h2 class="card_subtitle">{{$producto->precio}}</h2>
 
                 <p class="card_content">
-                    {{ $producto['des']}}
+                    {{ Str::limit($producto->descripcion)}}
                 </p>
 
                 <div class="card-actions justify-end">
                     <button class="btn btn-primary">Buy Now</button>
+                    <div class="btn btn-primary">Stock:{{$producto->stock}}</div>
                 </div>
+                <div class="card-actions justify-end">
+                    <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-primary my-3">Editar</a>
+                    <form action="{{ route('productos.destroy', $producto->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-primary my-3 btn-">Eliminar</button>
+                    </form>
+                </div>
+
+
+                <!-- Nuevos botones -->
+
+
             
         </div>
         

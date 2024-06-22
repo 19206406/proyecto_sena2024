@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
+
+/*Lo que hay a continuacion es para que la base de datos funcione correctamente*/
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,35 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-
-    $productos = [
-
-        ['nombre' => 'Helado de cafe', 'precio' => 15000, 'des' => 'Nuestro helado de vainilla es una deliciosa combinación de cremosidad y sabor suave. Elaborado con vainilla de alta calidad, cada bocado te transporta a un mundo de dulzura y satisfacción. Su textura suave y sedosa se funde en tu boca, dejando un regusto dulce y reconfortante'],
-        ['nombre' => 'Helado de vainilla', 'precio' => 13000, 'des' => 'Nuestro helado de vainilla es una deliciosa combinación de cremosidad y sabor suave. Elaborado con vainilla de alta calidad, cada bocado te transporta a un mundo de dulzura y satisfacción. Su textura suave y sedosa se funde en tu boca, dejando un regusto dulce y reconfortante'],
-        ['nombre' => 'Helado de frito', 'precio' => 18000, 'des' => 'Sumérgete en una experiencia única con nuestro helado suave y cremoso, envuelto en una crujiente capa dorada y caliente. Cada bocado es una explosión de sabor y textura que deleitará tus sentidos'],
-        ['nombre' => 'Helado de yogurt', 'precio' => 18000, 'des' => 'una opción deliciosa y saludable para cualquier momento del día! Desde los clásicos naturales hasta los indulgentes con sabores frutales y exóticos'],
-        ['nombre' => 'Helado de ron con pasas', 'precio' => 20000, 'des' => 'Cada suave cucharada es una explosión de sabor, con la dulzura del ron perfectamente equilibrada con el toque jugoso de las pasas. Este delicioso helado es un capricho para los amantes del dulce y del licor']
-    ];
+Route::view('/', 'productos.index');
 
 
-    //$descripcion = [
-    //        'nombre' => 'Nuestro helado de vainilla es una deliciosa combinación de cremosidad y sabor suave. Elaborado con vainilla de alta calidad, cada bocado te transporta a un mundo de dulzura y satisfacción. Su textura suave y sedosa se funde en tu boca, dejando un regusto dulce y reconfortante',
-    //        'nombre' => 'Nuestro helado de vainilla es una deliciosa combinación de cremosidad y sabor suave. Elaborado con vainilla de alta calidad, cada bocado te transporta a un mundo de dulzura y satisfacción. Su textura suave y sedosa se funde en tu boca, dejando un regusto dulce y reconfortante',
-    //        'nombre' => 'Sumérgete en una experiencia única con nuestro helado suave y cremoso, envuelto en una crujiente capa dorada y caliente. Cada bocado es una explosión de sabor y textura que deleitará tus sentidos',
-    //        'nombre' => 'una opción deliciosa y saludable para cualquier momento del día! Desde los clásicos naturales hasta los indulgentes con sabores frutales y exóticos',
-    //        'nombre' => 'Cada suave cucharada es una explosión de sabor, con la dulzura del ron perfectamente equilibrada con el toque jugoso de las pasas. Este delicioso helado es un capricho para los amantes del dulce y del licor'
-    //];
 
-    
-
-    $nombre = "Heladaria dulce";
-
-    return view('welcome', ['productos' => $productos], ['nombre' => $nombre]);
-
-});
+Route::view('/producto', 'cliente.productos')->name('producto'); 
 
 
+
+Route::view('/carrito', 'cliente.carrito')->name('carrito'); 
 
 Route::get('/inicio', function(){
     return view('inicio');
@@ -52,6 +36,23 @@ Route::get('/principal', function(){
 })->name('principal.principal');
 
 
+// CRUD 
+// Listar productos
+/*Route::get('/', [ProductoController::class, 'index'])->name('productos.index');
+// Crear productos 
+Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.create
+.');
+Route::post('/productos', [ProductoController::class, 'store'])->name('productos.store');
+// Listar producto 
+Route::get('/productos/{producto}', [ProductoController::class, 'show'])->name('productos.show'); /*El /productos/{producto}
+es un parametro en el cual se mustra el producto con el id tal */
 
+// Editar producto 
+/*Route::get('/productos/{producto}/edit', [ProductoController::class, 'edit'])->name('productos.edit'); 
 
+Route::put('/productos/{producto}', [ProductoController::class, 'update'])->name('producto.update'); 
 
+// Eliminar producto 
+Route::delete('/productos/{producto}', [ProductoController::class, 'destroy'])->name('producto.destroy'); */
+
+Route::resource('productos', ProductoController::class); // Crear 7 rutas para el CRUD 
