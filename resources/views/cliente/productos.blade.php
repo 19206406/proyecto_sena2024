@@ -21,7 +21,11 @@
                         <button class="boton-menu boton-categoria active"><i class="bi bi-hand-index-fill"></i>Todos los productos</button>
                     </li>
                     <li>
-                        <a class="boton-menu boton-carrito" href="{{route('carrito')}}"><i class="bi bi-cart-fill"></i>Carrrito <span class="numerito">0</span></a>
+                        <a class="boton-menu boton-carrito" href="{{route('carrito')}}"><i class="bi bi-cart-fill"></i>Carrrito <span class="numerito">1</span></a>
+                    </li>
+                    <li>
+                        <a class="boton-menu boton-carrito" href="{{route('home')}}">Wellcome
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -32,18 +36,19 @@
         <main>
 
             <h2 class="titulo-principal">Productos</h2>
-            <div class="contenedor-productos">
-            
+            <div id="contenedor-productos" class="contenedor-productos">
+            <!--Aqui se rellenan con la función listar con php y laravel-->
+            @foreach($productos as $producto)
                 <div class="producto">
                     <img class="w-[200px] rounded-[25%] producto-imagen" src="https://cdn.pixabay.com/photo/2023/09/23/19/15/ai-generated-8271636_1280.jpg" alt="">
                     <div class="producto-detalles">
-                        <h3 class="producto-titulo">$producto->nombre</h3>
-                        <h3 class="producto-titulo">$producto->precio</h3>
-                        <p class="producto-descripcion">($producto->descripcion)</p>
-                        <button class="producto-agregar">Agregar</button>
+                        <h3 class="producto-titulo">{{ $producto->nombre }}</h3>
+                        <h3 class="producto-titulo">{{ $producto->precio }}</h3>
+                        <p class="producto-descripcion">({{ Str::limit($producto->descripcion) }})</p>
+                        <button id="{{ $producto->id }}" class="producto-agregar">Agregar</button>
                     </div>
                 </div>
-                
+            @endforeach
             </div>
 
 

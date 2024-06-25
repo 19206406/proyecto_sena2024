@@ -4,9 +4,8 @@
 
 <style>
     body {
-    background-color: #fff;
+    background-color: transparent;
     font-family: sans-serif;
-    color: white;
     
     }
 
@@ -20,6 +19,7 @@
         padding: 20px 10px;
         box-shadow: 0px 0px 35px #0006;
         border-radius: 8px;
+        color: white
     }
     
     .card_title {
@@ -59,7 +59,7 @@
                 -->
                 <!--  <img class="w-[200px] rounded-[25%]" src="https://cdn.pixabay.com/photo/2023/09/23/19/15/ai-generated-8271636_1280.jpg" alt=""> {{ $producto->nombre }}" alt="{{ $producto->nombre }} <img src="https://unsplash.com/es/images/food/ice-cream">-->
 
-                <img class="w-[200px] rounded-[25%]" src="https://cdn.pixabay.com/photo/2023/09/23/19/15/ai-generated-8271636_1280.jpg" alt="">
+                <figure><img class="w-[200px] rounded-[25%]" src="https://cdn.pixabay.com/photo/2023/09/23/19/15/ai-generated-8271636_1280.jpg" alt="imagen producto"></figure>
                 
             </div>
             <h1 class="card_title">{{ $producto->nombre }}</h1>

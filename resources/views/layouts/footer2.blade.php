@@ -1,5 +1,5 @@
 
-<footer class="bg-cyan-700 text-blue-200">
+<footer class="footer p-10 bg-cyan-700 text-blue-200">
     <div class="container mx-auto py-14 px-6">
         <div class="grid md:grid-cols-12 grid-cols-1 gap-7">
             <div class="lg:col-span-4 col:span-12">
